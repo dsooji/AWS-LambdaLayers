@@ -16,7 +16,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.12"
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
@@ -25,10 +25,8 @@ jobs:
 
       - name: Zip Lambda function
         run: |
-         mkdir -p lambda_function
-         cp lambda_function/lambda_function.py lambda_function/
-         cd lambda_function
-         zip -r lambda_function.zip .
+          mkdir -p lambda_function
+          zip -r lambda_function/lambda_function.zip lambda_function.py
 
 
       - name: Zip Lambda layer
