@@ -35,6 +35,11 @@ jobs:
           cd lambda_function
           zip -r ../lambda_function.zip .
 
+      - name: Copy ZIP files to Terraform directory
+        run: |
+          cp lambda_function.zip ./terraform/lambda_function.zip
+          cp requests.zip ./terraform/requests.zip
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
@@ -47,6 +52,4 @@ jobs:
         run: terraform plan
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve          
-
-
+        run: terraform apply -auto-approve
