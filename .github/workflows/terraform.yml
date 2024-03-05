@@ -31,6 +31,5 @@ jobs:
 
       - name: Zip Lambda layer
         run: |
-          mkdir -p Modules
           cd Modules
           zip -r requests.zip requests
