@@ -31,6 +31,7 @@ jobs:
 
       - name: Zip Lambda layer
         run: |
+          mkdir -p Modules
           cd Modules
-          pip install -r requirements.txt -t .
-          zip -r ../requests.zip .
+          zip -r requests.zip requests
+
