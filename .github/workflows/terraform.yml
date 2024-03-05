@@ -3,7 +3,7 @@ name: Terraform
 on:
   push:
     branches:
-      - main
+      - devbranch
 
 jobs:
   build:
@@ -34,10 +34,3 @@ jobs:
           cd Modules
           zip -r requests.zip requests
 
-      - name: Commit changes
-        run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-          git add .
-          git commit -m "Update zip files"
-          git push
