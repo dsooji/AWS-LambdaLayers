@@ -26,11 +26,12 @@ jobs:
       - name: Zip Lambda function
         run: |
           mkdir -p lambda_function
-          zip -r lambda_function/lambda_function.zip lambda_function.py
+          cp lambda_function.py lambda_function/
+          cd lambda_function
+          zip -r lambda_function.zip .
 
       - name: Zip Lambda layer
         run: |
           mkdir -p Modules
           cd Modules
           zip -r requests.zip requests
-
