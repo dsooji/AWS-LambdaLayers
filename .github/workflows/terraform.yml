@@ -34,6 +34,8 @@ jobs:
           pip install -r requirements.txt -t Modules/.
           cd Modules
           zip -r ../requests.zip .
+          ls -l
+          cd ..
 
       - name: Zip Lambda function
         run: |
