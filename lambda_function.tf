@@ -1,8 +1,3 @@
-provider "aws" {
-  region  = "ap-south-1"
-  profile = "Deepen"
-}
-
 resource "aws_iam_role" "lambda_role" {
   name = "lambda-role"
 
