@@ -34,6 +34,7 @@ jobs:
         run: |
           cd lambda_function
           zip -r ../lambda_function.zip .
+        working-directory: ${{ github.workspace }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
