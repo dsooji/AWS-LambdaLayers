@@ -37,12 +37,23 @@ jobs:
           cd ..
 
       - name: Upload dependencies to S3
-        uses: jakejarvis/s3-sync-action@v2
-        with:
-          args: --acl public-read --delete
+        run: |
+          aws s3 cp dependencies.zip s3://deepen-s3-bucket/dependencies.zip
         env:
-          AWS_S3_BUCKET: your-bucket-name
-          AWS_REGION: "ap-south-1"
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SOURCE_DIR: "Modules"
+          AWS_REGION: "ap-south-1"
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: "1.7.2"
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
