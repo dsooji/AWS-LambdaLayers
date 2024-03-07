@@ -2,17 +2,11 @@ name: CI/CD for Lambda Publish
 
 on:
   workflow_run:
-    workflows: ["CI/CD for Layer Publish"]
+    workflows: ["Layer Publish"]
     types:
       - completed
 
 jobs:
-  dummy_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dummy step
-        run: echo "This is a dummy step"
-
   build:
     needs: layerpublish
     runs-on: ubuntu-latest
