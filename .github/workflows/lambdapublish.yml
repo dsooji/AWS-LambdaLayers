@@ -6,12 +6,6 @@ on:
       - devbranch
 
 jobs:
-  dummy_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dummy step
-        run: echo "This is a dummy job"
-
   build:
     needs: layerpublish
     runs-on: ubuntu-latest
