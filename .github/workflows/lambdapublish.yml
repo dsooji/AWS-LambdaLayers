@@ -1,13 +1,15 @@
 name: CI/CD for Lambda Publish
 
 on:
-  push:
-    branches:
-      - devbranch
+  workflow_dispatch:
+    inputs:
+      trigger_layer_publish:
+        description: 'Trigger Layer Publish Workflow'
+        required: true
+
 
 jobs:
   build:
-    needs: layerpublish
     runs-on: ubuntu-latest
 
     env:
