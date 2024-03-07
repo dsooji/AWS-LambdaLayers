@@ -1,0 +1,40 @@
+name: Terraform
+
+on:
+  push:
+    branches:
+      - devbranch
+
+jobs:
+  build:
+    needs: layerpublish
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: "ap-south-1"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.12"
+
+      # - name: Install dependencies
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     pip install -r requirements.txt
+
+      - name: Create lambda function zip
+        run: |
+          cd lambda_function
+          zip -r ../lambda_function.zip .
+          cd ..
+
+      - name: Upload lambda function zip to S3
+        run: |
+          aws s3 cp lambda_function.zip s3://deepen-s3-bucket/lambda_function.zip
