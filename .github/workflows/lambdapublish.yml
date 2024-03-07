@@ -36,6 +36,8 @@ jobs:
           zip -r lambda_function.zip lambda_function.py
           cd ..
           echo "Lambda function zip created"
+          ls -al 
+
 
       - name: Upload lambda function zip to S3
         run: |
