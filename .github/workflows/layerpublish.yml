@@ -1,4 +1,4 @@
-name: Terraform
+name: CI/CD for Layer Publish
 
 on:
   push:
