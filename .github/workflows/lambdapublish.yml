@@ -1,10 +1,9 @@
 name: CI/CD for Lambda Publish
 
 on:
-  workflow_run:
-    workflows: ["Layer Publish"]
-    types:
-      - completed
+  push:
+    branches:
+      - devbranch
 
 jobs:
   build:
