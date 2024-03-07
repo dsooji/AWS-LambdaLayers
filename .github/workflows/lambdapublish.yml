@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    needs: layerpublish
+    # needs: layerpublish
     runs-on: ubuntu-latest
 
     env:
@@ -31,9 +31,11 @@ jobs:
 
       - name: Create lambda function zip
         run: |
+          echo "Creating lambda function zip"
           cd lambda_function
           zip -r ../lambda_function.zip lambda_function/lambda_function.py
           cd ..
+          echo "Lambda function zip created"
 
       - name: Upload lambda function zip to S3
         run: |
