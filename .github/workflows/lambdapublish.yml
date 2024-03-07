@@ -7,6 +7,12 @@ on:
       - completed
 
 jobs:
+  dummy_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dummy step
+        run: echo "This is a dummy step"
+
   build:
     needs: CI/CD for Layer Publish
     runs-on: ubuntu-latest
