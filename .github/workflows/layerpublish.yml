@@ -44,7 +44,7 @@ jobs:
      - name: Update Lambda Layer
         run: |
           LAYER_VERSION=$(aws lambda publish-layer-version \
-            --layer-name my-layer \
+            --layer-name requestmodulelayer-tf \
             --description "Updated dependencies" \
             --content S3Bucket=deepen-s3-bucket,S3Key=dependencies.zip \
             --compatible-runtimes python3.12 \
@@ -52,7 +52,7 @@ jobs:
             --query Version)
 
             aws lambda update-function-configuration \
-            --function-name my-function \
-            --layers arn:aws:lambda:region:account-id:layer:my-layer:$LAYER_VERSION \
+            --function-name S3LambdaFunction-tf \
+            --layers arn:aws:lambda:ap-south-1:907430767271:layer:requestmodulelayer-tf:$LAYER_VERSION \
             --compatible-runtimes python3.12     
 
