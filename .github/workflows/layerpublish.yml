@@ -49,6 +49,7 @@ jobs:
             --compatible-runtimes python3.12 \
             --output text \
             --query Version)
+          echo "Printing latest Layer version"  
           echo LAYER_VERSION
 
           aws lambda update-function-configuration \
