@@ -40,3 +40,19 @@ jobs:
         run: |
           aws s3 cp dependencies.zip s3://deepen-s3-bucket/dependencies.zip
 
+
+     - name: Update Lambda Layer
+        run: |
+          LAYER_VERSION=$(aws lambda publish-layer-version \
+            --layer-name my-layer \
+            --description "Updated dependencies" \
+            --content S3Bucket=deepen-s3-bucket,S3Key=dependencies.zip \
+            --compatible-runtimes python3.12 \
+            --output text \
+            --query Version)
+
+            aws lambda update-function-configuration \
+            --function-name my-function \
+            --layers arn:aws:lambda:region:account-id:layer:my-layer:$LAYER_VERSION \
+            --compatible-runtimes python3.12     
+

@@ -2,5 +2,6 @@ lambda_function/lambda_function.zip
 Modules/requests.zip
 .terraform
 .terraform.lock.hcl 
+terraform.tfstate
 
 
