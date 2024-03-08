@@ -46,6 +46,7 @@ jobs:
             --layer-name requestmodulelayer-tf \
             --description "Updated dependencies" \
             --content S3Bucket=deepen-s3-bucket,S3Key=dependencies.zip \
+            --compatible-runtimes python3.12 \
             --output text \
             --query Version)
 
