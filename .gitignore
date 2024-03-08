@@ -3,5 +3,6 @@ Modules/requests.zip
 .terraform
 .terraform.lock.hcl 
 terraform.tfstate
+terraform.tfstate.backup
 
 
