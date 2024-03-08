@@ -31,7 +31,7 @@ jobs:
       - name: Create directory and zip dependencies
         run: |
           mkdir Modules
-          pip install -r requirements.txt -t Modules
+          pip install -r requirements.txt --target Modules
           cd Modules
           zip -r ../dependencies.zip .
           cd ..
