@@ -1,13 +1,13 @@
 name: CI/CD for Lambda Publish
 
 on:
-  push:
-    branches:
-      - devbranch
+  workflow_run:
+    workflows: ["CI/CD for Layer Publish"]
+    types:
+      - completed
 
 jobs:
   build:
-    # needs: layerpublish
     runs-on: ubuntu-latest
 
     env:
@@ -42,5 +42,3 @@ jobs:
       - name: Upload lambda function zip to S3
         run: |
           aws s3 cp lambda_function.zip s3://deepen-s3-bucket/lambda_function.zip
-
-##
