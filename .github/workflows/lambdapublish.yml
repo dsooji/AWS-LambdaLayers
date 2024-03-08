@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    needs: layerpublish
+    needs: CI/CD for Layer Publish
     runs-on: ubuntu-latest
 
     env:
